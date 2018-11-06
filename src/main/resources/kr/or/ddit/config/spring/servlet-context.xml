@@ -11,6 +11,9 @@
 	
 	<!-- 스프링에서 처리 불가능한 리소스를 was의 default servlet으로 전달한다 -->
 	<mvc:default-servlet-handler/>
+	
+	<!-- type -->
+	<bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean" />
 
 	<context:annotation-config/>
 	

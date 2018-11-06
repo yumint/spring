@@ -38,8 +38,8 @@
   	<!-- 사용자 등록 -->
   	<insert id="insertUser" parameterType="userVo">
   	insert into jspuser
-			(userId, name ,pass , addr1 , addr2, zipcd , email, tel , birth , profile) 
-	values(#{userId},#{ name },#{pass },#{ addr1 },#{ addr2},#{ zipcd },#{ email},#{ tel },#{ birth} ,#{profile ,jdbcType=VARCHAR})
+			(userId, name ,pass , addr1 , addr2, zipcd , email, tel , birth, profile) 
+	values(#{userId},#{ name },#{pass },#{ addr1 },#{ addr2},#{ zipcd },#{ email},#{ tel },#{ birth},#{profile,jdbcType=VARCHAR})
   	
   	</insert>
   	

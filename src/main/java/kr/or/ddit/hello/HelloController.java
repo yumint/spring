@@ -25,7 +25,7 @@ import kr.or.ddit.user.model.UserVo;
  *2. @RequestMapping 어노테이션 적용(class/ method)
  */
 
-@RequestMapping("/hello")
+@RequestMapping("/hello")	 // 안써줘도 됨
 @Controller
 public class HelloController {
 	

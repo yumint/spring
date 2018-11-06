@@ -14,19 +14,19 @@
 <link rel="icon" href="../../favicon.ico">
 
 <title>Jsp</title>
-	<%@ include file="/common/basicLib.jsp" %> 
+	<%@ include file="/WEB-INF/view/common/basicLib.jsp" %> 
 </head>
 
 <body>
    <%-- @은 지시자 --%>
    <%-- header --%>
-   <%@ include file="/common/header.jsp" %> 
+   <%@ include file="/WEB-INF/view/common/header.jsp" %> 
    
    <div class="container-fluid">
       <div class="row">
       
          <%-- left --%>
-         <%@ include file="/common/left.jsp" %>
+         <%@ include file="/WEB-INF/view/common/left.jsp" %>
          
          <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <div class="blog-header">
