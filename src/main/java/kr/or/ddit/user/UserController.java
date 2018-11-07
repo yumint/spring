@@ -42,7 +42,7 @@ public class UserController {
 		@RequestMapping("/loginProcess")
 		public String loginProcess(HttpServletRequest request) {
 			String userId = request.getParameter("userId");
-			String pass = request.getParameter("pass");
+			String pass = request.getParameter("password");
 			
 			
 			if(userId.equals("brown") && pass.equals("1")) {
