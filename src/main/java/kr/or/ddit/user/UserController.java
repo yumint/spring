@@ -121,8 +121,37 @@ public class UserController {
 			 * 	RequestDispatcher rd = request.getRequestDispatcher("/user/userPagingList.jsp");
 				rd.forward(request, response);
 			 */
-			return "/user/userPagingList";
+			return "user/userPagingList";
 		}
+		
+		
+		@RequestMapping("/userPageListAjax")
+		public String userPageListAjax(Model model , PageVo pageVo) {
+			
+			Map<String , Object> resultMap = userService.selectUserPageList(pageVo);
+			model.addAllAttributes(resultMap);
+			
+			return "jsonView";
+		}
+		
+		@RequestMapping("/userPageListAjaxHtml")
+		public String userPageListAjaxHtml(Model model , PageVo pageVo) {
+			
+			Map<String , Object> resultMap = userService.selectUserPageList(pageVo);
+			model.addAllAttributes(resultMap);
+			
+			return "user/pageListHtml";
+		}
+		
+		@RequestMapping("/pageListAjaxHtml")
+		public String pageListAjaxHtml(Model model , PageVo pageVo) {
+			
+			Map<String , Object> resultMap = userService.selectUserPageList(pageVo);
+			model.addAllAttributes(resultMap);
+			
+			return "user/paginationHtml";
+		}
+		
 		
 		@RequestMapping("/userDetail")
 		public String userDetail(@RequestParam("userId")String userId , Model model) {
@@ -146,7 +175,7 @@ public class UserController {
 				rd.forward(request, response);
 			 */
 			
-			return "/user/userDetail";
+			return "user/userDetail";
 		}
 		
 		@RequestMapping(value="/userForm", method=RequestMethod.GET)

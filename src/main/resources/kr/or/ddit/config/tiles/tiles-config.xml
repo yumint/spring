@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+	<definition name="basicLayout" template="/WEB-INF/view/common/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/view/common/header.jsp"></put-attribute>
+		<put-attribute name="left" value="/WEB-INF/view/common/left.jsp"></put-attribute>
+		<put-attribute name="content" value=""></put-attribute>
+	</definition>
+	
+	<definition name="main" extends="basicLayout">
+		<put-attribute name="content" value="/WEB-INF/view/main.jsp"></put-attribute>
+	</definition>
+	
+	
+	<definition name="user/userAllList" extends="basicLayout">
+		<put-attribute name="content" value="/WEB-INF/view/user/userAllList.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="user/userPagingList" extends="basicLayout">
+		<put-attribute name="content" value="/WEB-INF/view/user/userPagingList.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="user/userDetail" extends="basicLayout">
+		<put-attribute name="content" value="/WEB-INF/view/user/userDetail.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="user/userForm" extends="basicLayout">
+		<put-attribute name="content" value="/WEB-INF/view/user/userForm.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="user/userFormUpdate" extends="basicLayout">
+		<put-attribute name="content" value="/WEB-INF/view/user/userFormUpdate.jsp"></put-attribute>
+	</definition>
+	
+</tiles-definitions>

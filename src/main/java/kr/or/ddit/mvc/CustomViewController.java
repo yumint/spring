@@ -17,9 +17,10 @@ public class CustomViewController {
 			return new TimesTablesView();
 		}
 		
+		
 		// http://localhost:8081/customViewBeanName
 		@RequestMapping("/customViewBeanName")
-		public String customViewBeanName(@RequestParam("tables")String tables , Model model) {
+		public String customViewBeanName(@RequestParam(name="tables", defaultValue="0")int tables , Model model) {
 			
 			model.addAttribute("tables" , tables);
 			
@@ -27,3 +28,14 @@ public class CustomViewController {
 		}
 		
 }
+
+
+
+
+
+
+
+
+
+
+

@@ -8,26 +8,13 @@
 <%@page import="kr.or.ddit.user.model.UserVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-<meta name="description" content="">
-<meta name="author" content="">
-<link rel="icon" href="../../favicon.ico">
-
-<title>userFormUpdate.jsp</title>
-<%@ include file="/WEB-INF/view/common/basicLib.jsp"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!--  jquesry ui css -->
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 <!-- 다음주소 Api -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
@@ -94,150 +81,133 @@
 </script>
 
 <style type="text/css">
-	#fileForm {
-    	padding-left: 200px;
-    	padding-top: 15px;
-	}
-	
+#fileForm {
+	padding-left: 200px;
+	padding-top: 15px;
+}
 </style>
 
-</head>
+<div class="row">
 
-<body>
-	<%-- @은 지시자 --%>
-	<%-- header --%>
-	<%@ include file="/WEB-INF/view/common/header.jsp"%>
-
-	<div class="container-fluid">
-		<div class="row">
-
-			<%-- left --%>
-			<%@ include file="/WEB-INF/view/common/left.jsp"%>
-
-			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-				<div class="row">
-
-					<form action="/user/userFormUpdate" method="post" class="form-horizontal" role="form" 
-							enctype="multipart/form-data">
-					
-					
-						
-						<div class="form-group">
-							<label for="userNm" class="col-sm-2 control-label">사용자 사진</label>
-<!-- 							<div class="col-sm-10"> -->
-<%-- 								<% --%>
-<%--// 									String profilePath = user.getProfile();--%>
-<%--// 									profilePath = --%>
-<%--// 									profilePath == null ? "/profile/noimage.png" : profilePath;--%>
-<%-- 								%> --%>
-<%-- 									<img id="image_section" src="<%= profilePath%>" alt="your image" /> --%>
-<!-- 							</div> -->
-							
-								<c:choose>
-    								<c:when test="${userVo.profile == null}"> 
-    									<c:set var="profile" value="profile/noimage.png"></c:set>
-    								</c:when>
-    								<c:otherwise>
-    									<c:set var="profile" value="${userVo.profile }"></c:set>
-    								</c:otherwise>
-    							</c:choose>
-								
-									<img src="${profile }" id="image_section" alt="your image">
-							
-							<div id="fileForm" class="col-sm-10">
-									<input type="file" name="profilePic" id="imgInput" />
-							</div>
-						</div>
-						
-						<div class="form-group">
-							<label for="userNm" class="col-sm-2 control-label">사용자 아이디</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" id="userId" name="userId"
-										placeholder="아이디"  value="${userVo.userId }" readonly="readonly">
-							</div>
-						</div>
-						
-						<div class="form-group">
-							<label for="userNm" class="col-sm-2 control-label">비밀번호</label>
-							<div class="col-sm-10">
-								<input type="password" class="form-control" id="pass" name="pass"
-										placeholder="비밀번호" value="${userVo.pass }">
-							</div>
-						</div>
-
-						<div class="form-group">
-							<label for="userNm" class="col-sm-2 control-label">이름</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" id="name" name="name"
-										placeholder="이름" value="${userVo.name }">
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="userNm" class="col-sm-2 control-label">주소</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" id="addr1" name="addr1"
-										placeholder="주소" value="${userVo.addr1 }"> 
-								<!-- 주소 검색 버튼  -->
-								<button id="addrSearchBtn" type="button" class="btn btn-default">주소검색</button>
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="pass" class="col-sm-2 control-label">상세주소</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" id="addr2" name="addr2"
-										placeholder="상세주소" value="${userVo.addr2 }">
-							</div>
-						</div>
-						
-						<div class="form-group">
-							<label for="pass" class="col-sm-2 control-label">우편번호</label>
-							<div class="col-sm-10">
-								<input  type="text" class="form-control" id="zipcd" name="zipcd"
-										placeholder="우편번호" value="${userVo.zipcd }">
-							</div>
-						</div>
-						
-						<%SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-						%>
-						
-						<div class="form-group">
-							<label for="pass" class="col-sm-2 control-label">생년월일</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" id="birth" name="birth"
-										placeholder="생년월일" 
-										value="<fmt:formatDate value='${userVo.birth }' pattern='yyyy-MM-dd'/>">
-			
-							</div>
-						</div>
-						
-						<div class="form-group">
-							<label for="pass" class="col-sm-2 control-label">이메일</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" id="email" name="email"
-										placeholder="이메일" value="${userVo.email }">
-							</div>
-						</div>
-						
-						<div class="form-group">
-							<label for="pass" class="col-sm-2 control-label">연락처</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" id="tel" name="tel"
-										placeholder="연락처" value="${userVo.tel }">
-							</div>
-						</div>
-						
-						<div class="form-group">
-							<div class="col-sm-offset-2 col-sm-10">
-								<button id="update" type="submit" class="btn btn-default">수정하기</button>
-							</div>
-						</div>
+	<form action="/user/userFormUpdate" method="post"
+		class="form-horizontal" role="form" enctype="multipart/form-data">
 
 
-					</form>
 
-				</div>
+		<div class="form-group">
+			<label for="userNm" class="col-sm-2 control-label">사용자 사진</label>
+			<!-- 							<div class="col-sm-10"> -->
+			<%-- 								<% --%>
+			<%--// 									String profilePath = user.getProfile();--%>
+			<%--// 									profilePath = --%>
+			<%--// 									profilePath == null ? "/profile/noimage.png" : profilePath;--%>
+			<%-- 								%> --%>
+			<%-- 									<img id="image_section" src="<%= profilePath%>" alt="your image" /> --%>
+			<!-- 							</div> -->
+
+			<c:choose>
+				<c:when test="${userVo.profile == null}">
+					<c:set var="profile" value="profile/noimage.png"></c:set>
+				</c:when>
+				<c:otherwise>
+					<c:set var="profile" value="${userVo.profile }"></c:set>
+				</c:otherwise>
+			</c:choose>
+
+			<img src="${profile }" id="image_section" alt="your image">
+
+			<div id="fileForm" class="col-sm-10">
+				<input type="file" name="profilePic" id="imgInput" />
 			</div>
 		</div>
-	</div>
+
+		<div class="form-group">
+			<label for="userNm" class="col-sm-2 control-label">사용자 아이디</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="userId" name="userId"
+					placeholder="아이디" value="${userVo.userId }" readonly="readonly">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="userNm" class="col-sm-2 control-label">비밀번호</label>
+			<div class="col-sm-10">
+				<input type="password" class="form-control" id="pass" name="pass"
+					placeholder="비밀번호" value="${userVo.pass }">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="userNm" class="col-sm-2 control-label">이름</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="name" name="name"
+					placeholder="이름" value="${userVo.name }">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="userNm" class="col-sm-2 control-label">주소</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="addr1" name="addr1"
+					placeholder="주소" value="${userVo.addr1 }">
+				<!-- 주소 검색 버튼  -->
+				<button id="addrSearchBtn" type="button" class="btn btn-default">주소검색</button>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="pass" class="col-sm-2 control-label">상세주소</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="addr2" name="addr2"
+					placeholder="상세주소" value="${userVo.addr2 }">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="pass" class="col-sm-2 control-label">우편번호</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="zipcd" name="zipcd"
+					placeholder="우편번호" value="${userVo.zipcd }">
+			</div>
+		</div>
+
+		<%SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+						%>
+
+		<div class="form-group">
+			<label for="pass" class="col-sm-2 control-label">생년월일</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="birth" name="birth"
+					placeholder="생년월일"
+					value="<fmt:formatDate value='${userVo.birth }' pattern='yyyy-MM-dd'/>">
+
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="pass" class="col-sm-2 control-label">이메일</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="email" name="email"
+					placeholder="이메일" value="${userVo.email }">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="pass" class="col-sm-2 control-label">연락처</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="tel" name="tel"
+					placeholder="연락처" value="${userVo.tel }">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-10">
+				<button id="update" type="submit" class="btn btn-default">수정하기</button>
+			</div>
+		</div>
+
+
+	</form>
+
+</div>
+
 </body>
 </html>

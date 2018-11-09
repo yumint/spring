@@ -1,5 +1,6 @@
 package kr.or.ddit.user.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -15,6 +16,11 @@ public class UserVo {
 	private String email;
 	private String tel;
 	private String profile;
+	
+	public String getFormattedBierth() {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		return sdf.format(birth);
+	}
 	
 	
 	@DateTimeFormat(pattern="yyyy-MM-dd")

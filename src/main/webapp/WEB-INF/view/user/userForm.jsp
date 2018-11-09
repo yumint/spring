@@ -8,22 +8,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-<meta name="description" content="">
-<meta name="author" content="">
-<link rel="icon" href="../../favicon.ico">
-
-<title>userForm.jsp</title>
-<%@ include file="/WEB-INF/view/common/basicLib.jsp"%>
 
 <!--  jquesry ui css -->
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 <!-- 다음주소 Api -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
@@ -82,120 +70,102 @@
 		
 	});
 </script>
+<div class="row">
 
-</head>
+	<form action="/user/userForm" method="post" class="form-horizontal"
+		role="form" enctype="multipart/form-data">
 
-<body>
-	<%-- @은 지시자 --%>
-	<%-- header --%>
-	<%@ include file="/WEB-INF/view/common/header.jsp"%>
+		<div class="form-group">
+			<label for="userNm" class="col-sm-2 control-label">사용자 사진</label>
+			<div class="col-sm-10">
 
-	<div class="container-fluid">
-		<div class="row">
+				<input type="file" name="profilePic">
 
-			<%-- left --%>
-			<%@ include file="/WEB-INF/view/common/left.jsp"%>
-
-			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-				<div class="row">
-
-					<form action="/user/userForm" method="post" class="form-horizontal" role="form" 
-							enctype="multipart/form-data">
-					
-						<div class="form-group">
-							<label for="userNm" class="col-sm-2 control-label">사용자 사진</label>
-							<div class="col-sm-10">
-			
-									<input type="file" name="profilePic">
-						
-							</div>
-						</div>
-
-						<div class="form-group">
-							<label for="userNm" class="col-sm-2 control-label">사용자
-								아이디</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" id="userId" name="userId"
-										placeholder="아이디">
-							</div>
-						</div>
-						
-						<div class="form-group">
-							<label for="userNm" class="col-sm-2 control-label">비밀번호</label>
-							<div class="col-sm-10">
-								<input type="password" class="form-control" id="pass" name="pass"
-										placeholder="비밀번호">
-							</div>
-						</div>
-
-						<div class="form-group">
-							<label for="userNm" class="col-sm-2 control-label">이름</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" id="name" name="name"
-										placeholder="이름">
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="userNm" class="col-sm-2 control-label">주소</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" id="addr1" name="addr1"
-										placeholder="주소" readonly="readonly"> 
-								<!-- 주소 검색 버튼  -->
-								<button id="addrSearchBtn" type="button" class="btn btn-default">주소검색</button>
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="pass" class="col-sm-2 control-label">상세주소</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" id="addr2" name="addr2"
-										placeholder="상세주소">
-							</div>
-						</div>
-						
-						<div class="form-group">
-							<label for="pass" class="col-sm-2 control-label">우편번호</label>
-							<div class="col-sm-10">
-								<input  type="text" class="form-control" id="zipcd" name="zipcd"
-										placeholder="우편번호" readonly="readonly">
-							</div>
-						</div>
-						
-						<div class="form-group">
-							<label for="pass" class="col-sm-2 control-label">생년월일</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" id="birth" name="birth"
-										placeholder="생년월일">
-							</div>
-						</div>
-						
-						<div class="form-group">
-							<label for="pass" class="col-sm-2 control-label">이메일</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" id="email" name="email"
-										placeholder="이메일">
-							</div>
-						</div>
-						
-						<div class="form-group">
-							<label for="pass" class="col-sm-2 control-label">연락처</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" id="tel" name="tel"
-										placeholder="연락처">
-							</div>
-						</div>
-						
-						<div class="form-group">
-							<div class="col-sm-offset-2 col-sm-10">
-								<button type="submit" class="btn btn-default">사용자 등록</button>
-							</div>
-						</div>
-
-
-					</form>
-
-				</div>
 			</div>
 		</div>
-	</div>
+
+		<div class="form-group">
+			<label for="userNm" class="col-sm-2 control-label">사용자 아이디</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="userId" name="userId"
+					placeholder="아이디">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="userNm" class="col-sm-2 control-label">비밀번호</label>
+			<div class="col-sm-10">
+				<input type="password" class="form-control" id="pass" name="pass"
+					placeholder="비밀번호">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="userNm" class="col-sm-2 control-label">이름</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="name" name="name"
+					placeholder="이름">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="userNm" class="col-sm-2 control-label">주소</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="addr1" name="addr1"
+					placeholder="주소" readonly="readonly">
+				<!-- 주소 검색 버튼  -->
+				<button id="addrSearchBtn" type="button" class="btn btn-default">주소검색</button>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="pass" class="col-sm-2 control-label">상세주소</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="addr2" name="addr2"
+					placeholder="상세주소">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="pass" class="col-sm-2 control-label">우편번호</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="zipcd" name="zipcd"
+					placeholder="우편번호" readonly="readonly">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="pass" class="col-sm-2 control-label">생년월일</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="birth" name="birth"
+					placeholder="생년월일">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="pass" class="col-sm-2 control-label">이메일</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="email" name="email"
+					placeholder="이메일">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="pass" class="col-sm-2 control-label">연락처</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="tel" name="tel"
+					placeholder="연락처">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-10">
+				<button type="submit" class="btn btn-default">사용자 등록</button>
+			</div>
+		</div>
+
+
+	</form>
+
+</div>
+
 </body>
 </html>
